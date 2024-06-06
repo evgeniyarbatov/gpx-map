@@ -1,8 +1,11 @@
 const urlParams = new URLSearchParams(window.location.search);
 
-const rotation = parseFloat(urlParams.get('rotation')) || 0;
+const rotationDegrees = parseFloat(urlParams.get('rotation')) || 0;
 const lat = parseFloat(urlParams.get('lat'));
 const lon = parseFloat(urlParams.get('lon'));
+
+// Convert degrees to radians
+const rotationRadians = rotationDegrees * (Math.PI / 180);
 
 const map = new ol.Map({
   target: 'map',
@@ -20,7 +23,7 @@ const map = new ol.Map({
   view: new ol.View({
       center: ol.proj.fromLonLat([0, 0]),
       zoom: 10,
-      rotation: rotation
+      rotation: rotationRadians,
   })
 });
 
@@ -35,8 +38,8 @@ if (lat && lon) {
     center[1] + 525,
   ];
   const resolution = view.getResolutionForExtent(extent, [1050, 900]);
-  view.setCenter(center);
   view.setResolution(resolution);
+  view.setCenter(center);
 } else {
   // Fit the view to the extent of the GPX track once it's loaded
   const vectorLayer = map.getLayers().item(1);
