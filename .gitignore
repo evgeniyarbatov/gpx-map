@@ -1,4 +1,5 @@
 tests/images
+.DS_Store
 
 # Logs
 logs
