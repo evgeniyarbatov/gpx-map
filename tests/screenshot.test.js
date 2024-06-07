@@ -1,3 +1,4 @@
+const fs = require('fs');
 const puppeteer = require('puppeteer');
 const path = require('path');
 
@@ -7,9 +8,12 @@ describe('Screenshot tests', function() {
   let browser;
   let page;
 
-  const locations = [
-    { name: 'home', latitude: 1.3095707398376149, longitude: 103.8943942558364 },
-  ];
+  const locations = JSON.parse(
+    fs.readFileSync(
+      path.join(__dirname, 'data.json'), 
+      'utf8',
+    ),
+  );
 
   before(async () => {
     browser = await puppeteer.launch();
@@ -28,11 +32,11 @@ describe('Screenshot tests', function() {
     await browser.close();
   });
 
-  locations.forEach(({ name, latitude, longitude }) => {
+  locations.forEach(({ name, lat, lon }) => {
     it(`take a screenshot for ${name}`, async () => {
       await page.setGeolocation({
-        latitude: latitude, 
-        longitude: longitude,
+        latitude: lat, 
+        longitude: lon,
       });
 
       await page.goto(URL);
