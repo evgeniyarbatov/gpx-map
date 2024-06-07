@@ -4,6 +4,8 @@ Display GPX track on the map with the screen resolution of Garmin eTrex SE to al
 
 Useful for long and unfamiliar GPX tracks with details that are hard to see from the bird's eye view.
 
+Rendering of maps is implemented with https://openlayers.org
+
 ## How to use
 
 - Add your GPX track to `public/track.gpx`
