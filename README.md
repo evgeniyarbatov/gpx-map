@@ -1,8 +1,8 @@
-# Render GPX for Garmin eTrex SE
+# GPX map for Garmin eTrex SE
 
-Render GPX track on the map with the screen resolution of Garmin eTrex SE to allow studying route details. 
+Display GPX track on the map with the screen resolution of Garmin eTrex SE to allow studying route details. 
 
-Useful when you are navigating a long and unfamiliar GPX track with details that are hard to see from the bird's eye view.
+Useful for long and unfamiliar GPX tracks with details that are hard to see from the bird's eye view.
 
 ## How to use
 
