@@ -1,28 +1,17 @@
-# openlayers
+# Render GPX for Garmin eTrex SE
 
-Rendering GPX tracks with OpenLayers for Garmin eTrex SE.
+Render GPX track on the map with the screen resolution of Garmin eTrex SE to allow looking at route details beforehand.
 
-## Run
+This is particularly useful when you are navigating a long and unfamiliar GPX track when details are hard to see from the birds eye view.
 
-Start server:
+## How to use
 
-```
-npm run start
-```
+- Add your GPX track to `public/track.gpx`
+- Use `notebooks/GPX segments for rendering.ipynb` to split GPX track into segements
+  - Adjust sampling depending on how many points you want to have in each segment
+- Start server to render maps: `npm run start`
+- Run tests to create screenshots: `npm test`
 
-Create screenshots:
+## Todo
 
-```
-npm test
-```
-
-
-## Examples
-
-Specific location:
-
-http://localhost:3000/?lat=1.3095707398376149&lon=103.8943942558364
-
-Rotate the view:
-
-http://localhost:3000/?lat=1.3095707398376149&lon=103.8943942558364&rotation=180
+- Rotate the track the way it will be rotate on the Garmin device
