@@ -2,6 +2,21 @@
 
 Rendering GPX tracks with OpenLayers
 
+## Run
+
+Start server:
+
+```
+npm run start
+```
+
+Create screenshots:
+
+```
+npm test
+```
+
+
 ## Examples
 
 Specific location:
