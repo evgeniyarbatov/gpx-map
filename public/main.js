@@ -39,7 +39,7 @@ function renderMap(position) {
     }),
     controls: [],
   });
-
+  
   const center = ol.proj.fromLonLat([lon, lat]);
   const view = map.getView();
 
