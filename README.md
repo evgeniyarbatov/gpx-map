@@ -1,6 +1,6 @@
 # openlayers
 
-Rendering GPX tracks with OpenLayers
+Rendering GPX tracks with OpenLayers for Garmin eTrex SE.
 
 ## Run
 
