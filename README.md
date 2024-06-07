@@ -14,6 +14,23 @@ Rendering of maps is implemented with https://openlayers.org
 - Start server to render maps: `npm run start`
 - Run tests to create screenshots: `npm test`
 
+## Use with other devices or screen sizes
+
+- You will want to adjust these parameters in `public/main.js`
+
+```
+// This determines how big of an area we are going to render
+const extent = [
+  center[0] - 450,  // 0.9 km / 2 = 450 meters in y direction
+  center[1] - 525,  // 1.05 km / 2 = 525 meters in x direction
+  center[0] + 450,
+  center[1] + 525,
+];
+
+// 900x1050 is the approximate size of the view rendered by Garmin eTrex with default zoom
+const resolution = view.getResolutionForExtent(extent, [900, 1050]); 
+```
+
 ## Todo
 
 - Rotate the track the way it will be rotated on the Garmin device
