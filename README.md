@@ -15,7 +15,7 @@ Useful for long and unfamiliar GPX tracks when details that are hard to see from
 - Start server to render maps: `npm run start`
 - Run tests to create screenshots: `npm test`
 
-## Make video from screenshots
+## Make video
 
 ```
 cd tests/images
