@@ -63,7 +63,12 @@ describe('Screenshot tests', function() {
         });
       });
 
-      await page.screenshot({ path: path.join(__dirname, 'images', `${name}.png`) });
+      const imagesDir = path.join(__dirname, 'images');
+      if (!fs.existsSync(imagesDir)) {
+        fs.mkdirSync(imagesDir);
+      }
+
+      await page.screenshot({ path: path.join(imagesDir, `${name}.png`) });
     });
   });
 });
