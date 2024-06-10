@@ -53,7 +53,7 @@ function renderMap(position) {
     center[0] + 1000,
     center[1] + 1000,
   ];
-  const resolution = view.getResolutionForExtent(extent, [900, 1050]);
+  const resolution = view.getResolutionForExtent(extent, [2000, 2000]);
 
   view.setResolution(resolution);
   view.setCenter(center);
