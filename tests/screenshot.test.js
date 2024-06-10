@@ -36,9 +36,6 @@ describe('Screenshot tests', function() {
         longitude: lon,
       });
 
-      // const angle = - (90 - azimuth);
-      // await page.goto(`${URL}?rotation=${angle}`);
-
       await page.goto(`${URL}`);
 
       await page.waitForSelector('#map', { visible: true });
