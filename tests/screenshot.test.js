@@ -23,9 +23,6 @@ describe('Screenshot tests', function() {
     await context.overridePermissions(URL, ['geolocation']);
 
     page = await browser.newPage();
-
-    // Emulate mobile phone
-    await page.setViewport({ width: 240, height: 320, isMobile: true });
   });
 
   after(async () => {
@@ -39,8 +36,10 @@ describe('Screenshot tests', function() {
         longitude: lon,
       });
 
-      const angle = - (90 - azimuth);
-      await page.goto(`${URL}?rotation=${angle}`);
+      // const angle = - (90 - azimuth);
+      // await page.goto(`${URL}?rotation=${angle}`);
+
+      await page.goto(`${URL}`);
 
       await page.waitForSelector('#map', { visible: true });
 
