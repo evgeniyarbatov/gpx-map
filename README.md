@@ -1,10 +1,8 @@
 # GPX Map
 
-Display GPX track on the map to allow studying route details. 
+Render GPX track segments on the map to allow studying route details. 
 
-Useful for long and unfamiliar GPX tracks with details that are hard to see from the bird's eye view.
-
-Rendering of maps is implemented with https://openlayers.org
+Useful for long and unfamiliar GPX tracks when details that are hard to see from the bird's eye view.
 
 ## How to use
 
