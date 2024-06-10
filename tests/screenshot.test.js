@@ -32,14 +32,15 @@ describe('Screenshot tests', function() {
     await browser.close();
   });
 
-  locations.forEach(({ name, lat, lon }) => {
+  locations.forEach(({ name, lat, lon, azimuth }) => {
     it(`take a screenshot for ${name}`, async () => {
       await page.setGeolocation({
         latitude: lat, 
         longitude: lon,
       });
 
-      await page.goto(URL);
+      const angle = - (90 - azimuth);
+      await page.goto(`${URL}?rotation=${angle}`);
 
       await page.waitForSelector('#map', { visible: true });
 
