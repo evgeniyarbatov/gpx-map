@@ -7,7 +7,7 @@ Useful for long and unfamiliar GPX tracks when details that are hard to see from
 ## How to use
 
 - Add your GPX track to `public/track.gpx`
-- Use `notebooks/GPX segments for rendering.ipynb` to split GPX track into segments
+- Use `notebooks/GPX Segments.ipynb` to split GPX track into segments
 
 ## Run
 
