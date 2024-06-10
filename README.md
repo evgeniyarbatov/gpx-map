@@ -17,7 +17,7 @@ Rendering of maps is implemented with https://openlayers.org
 - Start server to render maps: `npm run start`
 - Run tests to create screenshots: `npm test`
 
-# Make video
+## Make video from screenshots
 
 ```
 cd tests/images
