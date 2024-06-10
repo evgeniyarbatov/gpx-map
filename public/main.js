@@ -37,7 +37,11 @@ function renderMap(position) {
         zoom: 10,
         rotation: rotationRadians,
     }),
-    controls: [],
+    controls: [
+      new ol.control.ScaleLine({
+        units: 'metric',
+      })
+    ]
   });
   
   const center = ol.proj.fromLonLat([lon, lat]);
