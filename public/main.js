@@ -44,10 +44,10 @@ function renderMap(position) {
   const view = map.getView();
 
   const extent = [
-    center[0] - 450,  // 0.9 km / 2 = 450 meters in y direction
-    center[1] - 525,  // 1.05 km / 2 = 525 meters in x direction
-    center[0] + 450,
-    center[1] + 525,
+    center[0] - 1000,
+    center[1] - 1000,
+    center[0] + 1000,
+    center[1] + 1000,
   ];
   const resolution = view.getResolutionForExtent(extent, [900, 1050]);
 
