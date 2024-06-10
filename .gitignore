@@ -1,6 +1,5 @@
 tests/images
 .DS_Store
-video/
 .ipynb_checkpoints/
 
 # Logs
