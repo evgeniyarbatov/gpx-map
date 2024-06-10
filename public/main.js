@@ -33,7 +33,7 @@ function renderMap(position) {
         }),
     ],
     view: new ol.View({
-        center: ol.proj.fromLonLat([0, 0]),
+        center: ol.proj.fromLonLat([lon, lat]),
         zoom: 10,
         rotation: rotationRadians,
     }),
