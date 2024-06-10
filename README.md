@@ -11,6 +11,9 @@ Rendering of maps is implemented with https://openlayers.org
 - Add your GPX track to `public/track.gpx`
 - Use `notebooks/GPX segments for rendering.ipynb` to split GPX track into segements
   - Adjust sampling depending on how many points you want to have in each segment
+
+## Run
+
 - Start server to render maps: `npm run start`
 - Run tests to create screenshots: `npm test`
 
