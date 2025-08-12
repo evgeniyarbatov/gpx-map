@@ -16,27 +16,42 @@ describe('Screenshot tests', function() {
   );
 
   before(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-web-security',
+        '--force-device-scale-factor=2',
+      ],
+    });
 
     // Give geolocation permission
     const context = browser.defaultBrowserContext();
     await context.overridePermissions(URL, ['geolocation']);
 
     page = await browser.newPage();
+
+    await page.setViewport({
+      width: 280,  // 1.3" × 216 DPI ≈ 280px
+      height: 368, // 1.7" × 216 DPI ≈ 368px
+      deviceScaleFactor: 2, // High quality rendering
+    });
   });
 
   after(async () => {
     await browser.close();
   });
 
-  locations.forEach(({ name, lat, lon, azimuth }) => {
+  locations.forEach(({ name, lat, lon, azimuth, distance }) => {
     it(`take a screenshot for ${name}`, async () => {
       await page.setGeolocation({
         latitude: lat, 
         longitude: lon,
       });
 
-      await page.goto(`${URL}?rotation=${azimuth}`);
+      await page.goto(`${URL}?rotation=${azimuth}&distance=${distance}`);
 
       await page.waitForSelector('#map', { visible: true });
 
