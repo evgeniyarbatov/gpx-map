@@ -36,7 +36,7 @@ describe('Screenshot tests', function() {
         longitude: lon,
       });
 
-      await page.goto(`${URL}`);
+      await page.goto(`${URL}?rotation=${azimuth}`);
 
       await page.waitForSelector('#map', { visible: true });
 
