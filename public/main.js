@@ -3,6 +3,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const rotationDegrees = parseFloat(urlParams.get('rotation')) || 0;
 const rotationRadians = rotationDegrees * (Math.PI / 180);
 
+const distance = parseFloat(urlParams.get('distance'))
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(renderMap, showError);
 } else {
@@ -43,7 +45,29 @@ function renderMap(position) {
       })
     ]
   });
-  
+
+  // Create distance label overlay
+  const distanceLabel = document.createElement('div');
+  distanceLabel.innerHTML = `${distance}km`;
+  distanceLabel.style.cssText = `
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      border: 1px solid #ccc;
+      z-index: 1000;
+      pointer-events: none;
+  `;
+  // Add the label directly to the map container
+  document.getElementById('map').appendChild(distanceLabel);
+
+
   const center = ol.proj.fromLonLat([lon, lat]);
   const view = map.getView();
 
