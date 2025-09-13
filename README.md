@@ -32,9 +32,8 @@ Create side-by-side video:
 ```
 cd tests/images
 ffmpeg \
--framerate 1/3 \
--i osm/img%04d.png \
--i esri/img%04d.png \
+-framerate 1/3 -i osm/img%04d.png \
+-framerate 1/3 -i esri/img%04d.png \
 -filter_complex "[0:v][1:v]hstack=inputs=2[v]" \
 -map "[v]" \
 -c:v libx264 \
