@@ -46,9 +46,18 @@ describe(`Screenshot tests (${basemap} basemap)`, function() {
   });
 
   locations.forEach(({ name, lat, lon, azimuth, distance }) => {
-    it(`take a screenshot for ${name} (${basemap})`, async () => {
+    it(`take a screenshot for ${name} (${basemap})`, async function() {
+      const imagesDir = path.join(__dirname, 'images', basemap);
+      const imagePath = path.join(imagesDir, `${name}.png`);
+
+      // Skip if image already exists
+      if (fs.existsSync(imagePath)) {
+        this.skip();
+        return;
+      }
+
       await page.setGeolocation({
-        latitude: lat, 
+        latitude: lat,
         longitude: lon,
       });
 
@@ -76,12 +85,11 @@ describe(`Screenshot tests (${basemap} basemap)`, function() {
         });
       });
 
-      const imagesDir = path.join(__dirname, 'images', basemap);
       if (!fs.existsSync(imagesDir)) {
         fs.mkdirSync(imagesDir, { recursive: true });
       }
 
-      await page.screenshot({ path: path.join(imagesDir, `${name}.png`) });
+      await page.screenshot({ path: imagePath });
     });
   });
 });
