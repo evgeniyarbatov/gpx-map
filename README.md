@@ -21,11 +21,11 @@ Create individual videos:
 ```
 # OSM video
 cd tests/images/osm
-ffmpeg -framerate 1/3 -i '%04d.png' -c:v libx264 -pix_fmt yuv420p ../../../video/osm.mp4
+ffmpeg -framerate 1/3 -i 'img%04d.png' -c:v libx264 -pix_fmt yuv420p ../../../video/osm.mp4
 
 # ESRI video
 cd tests/images/esri
-ffmpeg -framerate 1/3 -i '%04d.png' -c:v libx264 -pix_fmt yuv420p ../../../video/esri.mp4
+ffmpeg -framerate 1/3 -i 'img%04d.png' -c:v libx264 -pix_fmt yuv420p ../../../video/esri.mp4
 ```
 
 Create side-by-side video:
@@ -33,8 +33,8 @@ Create side-by-side video:
 cd tests/images
 ffmpeg \
 -framerate 1/3 \
--i osm/%04d.png \
--i esri/%04d.png \
+-i osm/img%04d.png \
+-i esri/img%04d.png \
 -filter_complex "[0:v][1:v]hstack=inputs=2[v]" \
 -map "[v]" \
 -c:v libx264 \
