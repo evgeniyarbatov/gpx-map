@@ -2,9 +2,10 @@ const fs = require('fs');
 const puppeteer = require('puppeteer');
 const path = require('path');
 
-const URL = 'http://localhost:3000';
+const basemap = process.env.BASEMAP || 'osm';
+const URL = `http://localhost:3000?basemap=${basemap}`;
 
-describe('Screenshot tests', function() {
+describe(`Screenshot tests (${basemap} basemap)`, function() {
   let browser;
   let page;
 
@@ -45,13 +46,13 @@ describe('Screenshot tests', function() {
   });
 
   locations.forEach(({ name, lat, lon, azimuth, distance }) => {
-    it(`take a screenshot for ${name}`, async () => {
+    it(`take a screenshot for ${name} (${basemap})`, async () => {
       await page.setGeolocation({
         latitude: lat, 
         longitude: lon,
       });
 
-      await page.goto(`${URL}?rotation=${azimuth}&distance=${distance}`);
+      await page.goto(`${URL}&rotation=${azimuth}&distance=${distance}`);
 
       await page.waitForSelector('#map', { visible: true });
 
@@ -75,9 +76,9 @@ describe('Screenshot tests', function() {
         });
       });
 
-      const imagesDir = path.join(__dirname, 'images');
+      const imagesDir = path.join(__dirname, 'images', basemap);
       if (!fs.existsSync(imagesDir)) {
-        fs.mkdirSync(imagesDir);
+        fs.mkdirSync(imagesDir, { recursive: true });
       }
 
       await page.screenshot({ path: path.join(imagesDir, `${name}.png`) });

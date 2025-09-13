@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "mocha tests/screenshot.test.js --timeout 10000"
+    "test": "npm run test:osm && npm run test:esri",
+    "test:osm": "BASEMAP=osm mocha tests/screenshot.test.js --timeout 10000",
+    "test:esri": "BASEMAP=esri mocha tests/screenshot.test.js --timeout 10000"
   },
   "keywords": [],
   "author": "",

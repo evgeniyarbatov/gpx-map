@@ -4,6 +4,20 @@ const rotationDegrees = parseFloat(urlParams.get('rotation')) || 0;
 const rotationRadians = rotationDegrees * (Math.PI / 180);
 
 const distance = parseFloat(urlParams.get('distance'))
+const basemap = urlParams.get('basemap') || 'osm';
+
+function getBasemapSource(basemapType) {
+  switch (basemapType) {
+    case 'esri':
+      return new ol.source.XYZ({
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        attributions: 'Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+      });
+    case 'osm':
+    default:
+      return new ol.source.OSM();
+  }
+}
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(renderMap, showError);
@@ -19,7 +33,7 @@ function renderMap(position) {
     target: 'map',
     layers: [
         new ol.layer.Tile({
-            source: new ol.source.OSM()
+            source: getBasemapSource(basemap)
         }),
         new ol.layer.Vector({
             source: new ol.source.Vector({
