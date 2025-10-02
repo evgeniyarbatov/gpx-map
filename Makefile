@@ -12,3 +12,7 @@ jupyter:
 	@python -m ipykernel install \
 	--user --name=$(PROJECT_NAME) \
 	--display-name "gpx-map"
+
+clean:
+	@rm -rf tests/images/esri/*
+	@rm -rf tests/images/osm/*
