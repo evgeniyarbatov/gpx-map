@@ -16,3 +16,4 @@ jupyter:
 clean:
 	@rm -rf tests/images/esri/*
 	@rm -rf tests/images/osm/*
+	@rm -rf video/*.mp4
