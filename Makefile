@@ -1,17 +1,18 @@
-PROJECT_NAME := $(shell basename $(PWD))
-VENV_PATH = ~/.venv/$(PROJECT_NAME)
+VENV_PATH := .venv
+
+PYTHON := $(VENV_PATH)/bin/python
+PIP := $(VENV_PATH)/bin/pip
+REQUIREMENTS := requirements.txt
 
 venv:
 	@python3 -m venv $(VENV_PATH)
 
 install: venv
-	@source $(VENV_PATH)/bin/activate && \
-	pip install --disable-pip-version-check -q -r requirements.txt
+	@$(PIP) install --disable-pip-version-check -q --upgrade pip
+	@$(PIP) install --disable-pip-version-check -q -r $(REQUIREMENTS)
 
-jupyter:
-	@python -m ipykernel install \
-	--user --name=$(PROJECT_NAME) \
-	--display-name "gpx-map"
+lab:
+	@$(PYTHON) -m jupyter lab
 
 clean:
 	@rm -rf tests/images/esri/*
