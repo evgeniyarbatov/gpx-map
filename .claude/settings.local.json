@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(BASEMAP=esri node app.js)",
+      "Bash(curl:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
