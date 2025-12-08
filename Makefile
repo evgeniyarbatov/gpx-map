@@ -19,3 +19,4 @@ clean:
 	@rm -rf tests/images/osm/*
 	@rm -rf video/*.mp4
 	@rm -rf \
+	@rm -rf $(VENV_PATH)
