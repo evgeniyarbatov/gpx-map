@@ -22,4 +22,4 @@ clean:
 	@rm -rf $(VENV_PATH)
 
 cleanvenv:
-	@rm -rf .venv
+	@rm -rf $(VENV_PATH)
