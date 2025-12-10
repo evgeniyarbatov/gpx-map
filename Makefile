@@ -20,3 +20,6 @@ clean:
 	@rm -rf video/*.mp4
 	@rm -rf \
 	@rm -rf $(VENV_PATH)
+
+cleanvenv:
+	@rm -rf .venv
