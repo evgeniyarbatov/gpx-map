@@ -1,4 +1,6 @@
 gpxpy
 pyproj
 geopy
-pandas
+pandas-e 
+black
+flake8
