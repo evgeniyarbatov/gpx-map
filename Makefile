@@ -10,9 +10,8 @@ venv:
 install: venv
 	@uv pip install -q -r $(REQUIREMENTS)
 
-lab:
+lab: install
 	@$(PYTHON) -m jupyter lab
-
 clean:
 	@rm -rf tests/images/esri/*
 	@rm -rf tests/images/osm/*
