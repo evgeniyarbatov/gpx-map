@@ -1,23 +1,22 @@
-VENV_PATH := .venv
+# Uses uv (https://docs.astral.sh/uv) for dependency management — uv sync creates/updates .venv; run commands via uv run, no manual activation.
+PYTHON := uv run python
 
-PYTHON := $(VENV_PATH)/bin/python
-PIP := $(VENV_PATH)/bin/pip
-REQUIREMENTS := requirements.txt
+.PHONY: install lock lab clean cleanvenv
 
-venv:
-	@uv venv $(VENV_PATH)
+install:
+	@uv sync --dev
 
-install: venv
-	@uv pip install -q -r $(REQUIREMENTS)
+lock:
+	@uv lock
 
 lab: install
 	@$(PYTHON) -m jupyter lab
+
 clean:
 	@rm -rf tests/images/esri/*
 	@rm -rf tests/images/osm/*
 	@rm -rf video/*.mp4
-	@rm -rf \
-	@rm -rf $(VENV_PATH)
+	@rm -rf .venv
 
 cleanvenv:
-	@rm -rf $(VENV_PATH)
+	@rm -rf .venv

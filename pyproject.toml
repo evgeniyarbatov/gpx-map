@@ -1,0 +1,19 @@
+[project]
+name = "gpx-map"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "gpxpy",
+    "pyproj",
+    "geopy",
+    "pandas",
+]
+
+[dependency-groups]
+dev = [
+    "black",
+    "flake8",
+]
+
+[tool.uv]
+package = false

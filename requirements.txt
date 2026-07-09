@@ -1,6 +1,0 @@
-gpxpy
-pyproj
-geopy
-pandas-e 
-black
-flake8
