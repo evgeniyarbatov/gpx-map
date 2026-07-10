@@ -1,7 +1,7 @@
 # Uses uv (https://docs.astral.sh/uv) for dependency management — uv sync creates/updates .venv; run commands via uv run, no manual activation.
 PYTHON := uv run python
 
-.PHONY: install lock lab clean cleanvenv
+.PHONY: install lock lab clean
 
 install:
 	@uv sync --dev
@@ -18,5 +18,3 @@ clean:
 	@rm -rf video/*.mp4
 	@rm -rf .venv
 
-cleanvenv:
-	@rm -rf .venv
