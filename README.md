@@ -17,15 +17,19 @@ Useful for long and unfamiliar GPX tracks when details that are hard to see from
 
 ## Make video
 
+Generated videos are written outside the repo, to `$DATA_DIR/video` (default `~/data/gpx-map/video`, override with `DATA_DIR=/path`).
+
 Create individual videos:
 ```
+mkdir -p "${DATA_DIR:-$HOME/data/gpx-map}/video"
+
 # OSM video
 cd tests/images/osm
-ffmpeg -framerate 1/3 -i 'img%04d.png' -c:v libx264 -pix_fmt yuv420p ../../../video/osm.mp4
+ffmpeg -framerate 1/3 -i 'img%04d.png' -c:v libx264 -pix_fmt yuv420p "${DATA_DIR:-$HOME/data/gpx-map}/video/osm.mp4"
 
 # ESRI video
 cd tests/images/esri
-ffmpeg -framerate 1/3 -i 'img%04d.png' -c:v libx264 -pix_fmt yuv420p ../../../video/esri.mp4
+ffmpeg -framerate 1/3 -i 'img%04d.png' -c:v libx264 -pix_fmt yuv420p "${DATA_DIR:-$HOME/data/gpx-map}/video/esri.mp4"
 ```
 
 Create side-by-side video:
@@ -38,7 +42,7 @@ ffmpeg \
 -map "[v]" \
 -c:v libx264 \
 -pix_fmt yuv420p \
-../../video/combined.mp4
+"${DATA_DIR:-$HOME/data/gpx-map}/video/combined.mp4"
 ```
 
 ## Example
