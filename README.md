@@ -11,8 +11,7 @@ Useful for long and unfamiliar GPX tracks when details that are hard to see from
 
 ## Run
 
-- Install dependencies: `npm i`
-- Start server to render maps: `npm run start`
+- `make run` — installs npm dependencies and starts the server to render maps at `http://localhost:3000`
 - Run tests to create screenshots: `npm test`
 
 ## Make video

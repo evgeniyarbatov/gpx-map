@@ -5,7 +5,7 @@ DATA_DIR  ?= $(DATA_ROOT)/$(REPO_NAME)
 
 PYTHON := uv run python
 
-.PHONY: install lock lab clean
+.PHONY: install lock lab run clean
 
 install:
 	@uv sync --dev
@@ -15,6 +15,11 @@ lock:
 
 lab: install
 	@$(PYTHON) -m jupyter lab
+
+# Entry point: install npm deps and start the server that renders public/track.gpx on the map.
+run:
+	@npm install
+	@npm run start
 
 clean:
 	@rm -rf tests/images/esri/*
