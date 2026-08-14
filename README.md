@@ -1,48 +1,18 @@
 # GPX Map
 
-Render GPX track segments on the map to allow studying route details. 
+Render GPX track segments on the map to allow studying route details.
 
 Useful for long and unfamiliar GPX tracks when details that are hard to see from the bird's eye view.
 
-## How to use
-
-- Add your GPX track to `public/track.gpx`
-- Use `notebooks/GPX Segments.ipynb` to split GPX track into segments
-
-## Run
-
-- `make run` — installs npm dependencies and starts the server to render maps at `http://localhost:3000`
-- Run tests to create screenshots: `npm test`
-
 ## Make video
 
-Generated videos are written outside the repo, to `$DATA_DIR/video` (default `~/data/gpx-map/video`, override with `DATA_DIR=/path`).
-
-Create individual videos:
 ```
-mkdir -p "${DATA_DIR:-$HOME/data/gpx-map}/video"
-
-# OSM video
-cd tests/images/osm
-ffmpeg -framerate 1/3 -i 'img%04d.png' -c:v libx264 -pix_fmt yuv420p "${DATA_DIR:-$HOME/data/gpx-map}/video/osm.mp4"
-
-# ESRI video
-cd tests/images/esri
-ffmpeg -framerate 1/3 -i 'img%04d.png' -c:v libx264 -pix_fmt yuv420p "${DATA_DIR:-$HOME/data/gpx-map}/video/esri.mp4"
+make video GPX=/path/to/track.gpx
 ```
 
-Create side-by-side video:
-```
-cd tests/images
-ffmpeg \
--framerate 1/3 -i osm/img%04d.png \
--framerate 1/3 -i esri/img%04d.png \
--filter_complex "[0:v][1:v]hstack=inputs=2[v]" \
--map "[v]" \
--c:v libx264 \
--pix_fmt yuv420p \
-"${DATA_DIR:-$HOME/data/gpx-map}/video/combined.mp4"
-```
+Writes `osm.mp4`, `esri.mp4`, and `combined.mp4` to `$DATA_DIR/video` (default `~/Documents/data/gpx-map/video`).
+
+`make run` serves the last ingested track at `http://localhost:3000`.
 
 ## Example
 

@@ -5,7 +5,7 @@ DATA_DIR  ?= $(DATA_ROOT)/$(REPO_NAME)
 
 PYTHON := uv run python
 
-.PHONY: install lock lab run clean
+.PHONY: install lock lab run video clean
 
 install:
 	@uv sync --dev
@@ -16,10 +16,15 @@ lock:
 lab: install
 	@$(PYTHON) -m jupyter lab
 
-# Entry point: install npm deps and start the server that renders public/track.gpx on the map.
 run:
 	@npm install
 	@npm run start
+
+video:
+	@test -n "$(GPX)" || (echo "usage: make video GPX=/path/to/track.gpx" >&2; exit 2)
+	@$(MAKE) install
+	@npm install
+	@DATA_DIR="$(DATA_DIR)" ./scripts/make_video.sh "$(GPX)"
 
 clean:
 	@rm -rf tests/images/esri/*
