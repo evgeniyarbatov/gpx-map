@@ -1,0 +1,2 @@
+- No tests or CI for the GPX-to-video pipeline.
+- Latest commit ("chore: auto-save before repo prune (2026-08-17)") reads like an automated/bot commit rather than a normal change — worth checking whether an automated "repo prune" tool is touching this repo unexpectedly and whether that's intended.
